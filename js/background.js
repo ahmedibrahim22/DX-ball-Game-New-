@@ -3,7 +3,6 @@ class Background {
     // setup the background
     constructor(game) {
         this.img = document.getElementById("backgroundOne");
-
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
     }

@@ -27,19 +27,25 @@ class Ball {
         this.position.x += this.speed.x;
         this.position.y += this.speed.y;
 
+        // when the ball hits the the top of gamepaly
         if (this.position.y < 0) {
             this.speed.y = -this.speed.y;
         }
+        // when the ball hits the the bottom of gamepaly without hitting the paddle (lose one live)
         if (this.position.y + this.size > this.gameHeight) {
             this.game.lives--;
             this.reset();
         }
+        // when the ball hits the the right or the left of gamepaly
         if (this.position.x + this.size > this.gameWidth || this.position.x < 0) {
             this.speed.x = -this.speed.x;
         }
 
+        // when the ball hits the paddle 
         if (detectCollision(this, this.game.paddle) === 1) {
+            // the ball goes up
             this.speed.y = -this.speed.y;
+            // update the vertical position of ball (means the ball goes up by one step)
             this.position.y = this.game.paddle.position.y - this.size;
         }
     }

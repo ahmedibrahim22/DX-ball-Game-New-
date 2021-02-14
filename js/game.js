@@ -29,11 +29,11 @@ class Game {
     }
     // start method to setup the game
     start(val = 0) {
-        debugger;
         // if menu pushed or level is ended .. return
         if (this.gameState !== GAME_STATE.MENU && this.gameState !== GAME_STATE.NEWLEVELL) return;
         // build the game
         this.bricks = buildLevel(this, this.levels[parseInt(localStorage.getItem("level")) - 1]);
+        // reset the ball 
         this.ball.reset();
         this.gameObjects = [this.background, this.ball, this.paddle, ]
         // check the state of the game (still running)
@@ -42,26 +42,32 @@ class Game {
     }
 
     update(deltaTime) {
+        // check if the player lose this level
         if (this.lives === 0) this.gameState = GAME_STATE.GAMEOVER;
+        // check the pause
         if (this.gameState === GAME_STATE.PAUSED || this.gameState === GAME_STATE.MENU || this.gameState === GAME_STATE.GAMEOVER) return;
-
+        // check if the player wins this level
         if (this.bricks.length === 0) {
+            // if the player finishs all the levels of the game
             if (parseInt(localStorage.getItem("level")) === 10) {
                 this.gameState = GAME_STATE.FiNISH;
                 return;
             } else {
                 window.localStorage.setItem("level", parseInt(localStorage.getItem("level")) + 1)
             }
+            // start the next level
             this.gameState = GAME_STATE.NEWLEVELL;
             this.start();
         }
-
+        // update the ball and bricks (combine arrays)
         [...this.gameObjects, ...this.bricks].forEach((obj) => obj.update(deltaTime));
+        // filter the deleted element of bricks array
         this.bricks = this.bricks.filter(obj => !obj.deleted);
     }
 
     // this function for drawing the game
     draw(ctx) {
+        // draw the 
         [...this.gameObjects, ...this.bricks].forEach((obj) => obj.draw(ctx));
         this.drawScore();
         this.drawLevels();

@@ -12,19 +12,25 @@ class Brick {
 
     // this method to upadte the ball and game depend on the hit of the ball
     update() {
-        //
+        // check when the ball hit the top of the brick (from top)
         if (detectCollision(this.game.ball, this) === 1) {
+            // update the speed of the ball
             this.game.ball.speed.y = -this.game.ball.speed.y;
+            // delete the brick element
             this.deleted = true;
+            // update the game score
             this.game.score += 10;
             // play sound of ball when hit the brick 
             if (this.game.soundEffectOn)
                 this.play();
         } 
-        //
+        // check when the ball hit the bottom of the brick (from bottom)
         else if (detectCollision(this.game.ball, this) === 2) {
+            // update the speed of the ball
             this.game.ball.speed.x = -this.game.ball.speed.x;
+            // delete the brick element
             this.deleted = true;
+            // update the game score
             this.game.score += 10;
             // play sound of ball when hit the brick
             if (this.game.soundEffectOn)
