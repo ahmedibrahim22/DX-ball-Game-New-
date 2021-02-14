@@ -8,8 +8,17 @@
     <link rel="stylesheet" href="css/levelsScene.css">
     <link rel="stylesheet" href="css/settings.css" />
     <style>
+      #gameScreen {
+            border: 1px solid black;
+            display: none;
+        }
+
+      #ballImg,
+      #brick,
+      #paddle,
       #setting,
-      #levels {
+      #levels 
+      #backgroundOne{
           display: none;
       }
       
@@ -24,6 +33,20 @@
   </style>
   </head>
   <body>
+    <img id="backgroundOne" src="img/1.jpg">
+    <img id="ballImg" src="img/ball.png">
+    <img id="brick" src="img/brick.png">
+    <img id="paddle" src="img/paddle.png">
+    <canvas id="gameScreen"></canvas>
+
+    <script src="js/background.js"></script>
+    <script src="js/paddle.js"></script>
+    <script src="js/ball.js"></script>
+    <script src="js/brick.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/game.js"></script>
+
+
     <!--back button-->
     <div id="back">
       <img src="menu/back.png" width="80 px" height="80px" />
@@ -114,8 +137,8 @@
       </div>
     </section>
 
-     <!--Levels Section-->
-     <section id = "levels">
+    <!--Levels Section-->
+    <section id = "levels">
       <div id="select">
       </div>
       <div id="allButtons">
@@ -127,7 +150,9 @@
          <button onclick="levelChoose(6)" id="btn6">6</button>
          <button onclick="levelChoose(7)" id="btn7">7</button>
       </div>
-  </section>
+      </section>
+    <script src="js/levelsPage.js"></script>
+
     <!--Settings handeling-->
     <section id="setting">
       <form>
@@ -171,8 +196,11 @@
         </div>
       </form>
     </section>
+    <script src="js/setting.js"></script>
     <script>
       function changeScreen(screenId) {
+        var canvas = document.getElementById("gameScreen");
+        canvas.style.display = "NONE";
         var menu = document.getElementById("menu");
         menu.style.display = "NONE";
         var levels = document.getElementById("levels");
@@ -183,6 +211,31 @@
         var target = document.getElementById(screenId);
         target.style.display = "block";
       }
+
+      function start() {
+        game.currentLevel = 0;
+        game.start();
+        playMusic();
+        changeScreen('gameScreen')
+      }
+
+      function back() {
+        game.gameState = GAME_STATE.PAUSED
+        changeScreen("menu")
+      }
+
+      function playMusic() {
+        if (game.musicOn) {
+            var song = document.getElementById("song");
+            song.play();
+        }
+      }
+
+      function closeMe() {
+        alert("do you want to refresh ?")
+        open(location, '_self').close();
+      }
+      
     </script>
   </body>
 </html>
