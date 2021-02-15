@@ -5,44 +5,24 @@ let ctx = canvas.getContext("2d");
 
 // get the max width of the window
 function getWidth() {
-    return Math.max(
-        // get the entire width of body (including not the viewable without margin)
-        document.body.scrollWidth,
-        // get the entire width of all html (including not the viewable)
-        document.documentElement.scrollWidth,
-        // get the entire viewable width of body (without border , sroll-bar and margin)
-        document.body.offsetWidth,
-        // get the entire viewable width of html elment
-        document.documentElement.offsetWidth,
-        // get the width of the viewable screen client
-        document.documentElement.clientWidth
-    );
+    // get the entire width of all html (including not the viewable)
+    return document.documentElement.scrollWidth;
 }
 
 // get the max height of the window
 function getHeight() {
-    return Math.max(
-        // get the entire height of body (including not the viewable without margin)
-        document.body.scrollHeight,
-        // get the entire height of all html (including not the viewable)
-        document.documentElement.scrollHeight,
-        // get the entire viewable height of body (without border , sroll-bar and margin)
-        document.body.offsetHeight,
-        // get the entire viewable width of html elment
-        document.documentElement.offsetHeight,
-        // get the width of the viewable screen client
-        document.documentElement.clientHeight
-    );
+    // get the entire height of all html (including not the viewable)
+    return document.documentElement.scrollHeight;
 }
 
 // intialize the canvas's width
-canvas.width = getWidth() - 20;
+canvas.width = getWidth();
 // intialize the canvas's height
-canvas.height = getHeight() - 30;
+canvas.height = getHeight();
 
 // intialize the game width and height
-const GAME_WIDTH = getWidth() - 20;
-const GAME_HEIGHT = getHeight() - 30;
+const GAME_WIDTH = getWidth();
+const GAME_HEIGHT = getHeight();
 
 // create object from game
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
