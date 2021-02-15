@@ -16,13 +16,13 @@ function getHeight() {
 }
 
 // intialize the canvas's width
-canvas.width = getWidth();
+canvas.width = getWidth() -2 ;
 // intialize the canvas's height
-canvas.height = getHeight();
+canvas.height = getHeight() -2;
 
 // intialize the game width and height
-const GAME_WIDTH = getWidth();
-const GAME_HEIGHT = getHeight();
+const GAME_WIDTH = getWidth() -2 ;
+const GAME_HEIGHT = getHeight() -2 ;
 
 // create object from game
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);

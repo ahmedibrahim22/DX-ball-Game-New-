@@ -6,7 +6,7 @@ class Brick {
         this.game = game;
         this.position = position;
         this.width = 70;
-        this.height = 30;
+        this.height = 35;
         this.deleted = false;
     }
 
