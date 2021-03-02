@@ -49,7 +49,7 @@ class Game {
         // check if the player wins this level
         if (this.bricks.length === 0) {
             // if the player finishs all the levels of the game
-            if (parseInt(localStorage.getItem("level")) === 10) {
+            if (parseInt(localStorage.getItem("level")) === 7) {
                 this.gameState = GAME_STATE.FiNISH;
                 return;
             } else {
