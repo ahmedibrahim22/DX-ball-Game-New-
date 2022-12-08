@@ -18,7 +18,7 @@ DX ball game, using HTML, CSS and Java Script. This project implementation made 
  - A ball continuously moving and hitting bricks
  - Bricks are destroyed and points are collected when hit by the ball
  - User control the paddle and moves it right and left to prevent the ball from hitting the ground
- - if the ball hits the ground, a life is lost.
+ - if the ball hits the ground, a life is lost..
 
 
 ## Getting Started
